@@ -1,7 +1,8 @@
-# SignalFlow repair and enhancement checklist
+# SignalFlow button functionality checklist
 
-- [x] Fix dark-mode hero contrast and any horizontal overflow at the reported viewport.
-- [x] Generate stronger complementary visual assets for light and dark states.
-- [x] Add purposeful hero/dashboard motion with reduced-motion support.
-- [x] Verify the theme toggle, responsive navigation, and 390px/1440px layouts.
-- [ ] Save a checkpoint and deliver the repaired revision.
+- [ ] Add a working signup/demo dialog for primary CTAs.
+- [ ] Wire secondary navigation and product actions to meaningful section behavior.
+- [ ] Verify keyboard access, close behavior, and responsive presentation.
+- [ ] Run checks and production build.
+- [ ] Package the complete source code as a ZIP archive.
+- [ ] Save a checkpoint and deliver both artifacts.

@@ -203,3 +203,15 @@ html, body { overflow-x: clip; }
 @keyframes rule-in { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
 @keyframes card-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes draw-signal { to { stroke-dashoffset: 0; } }
+
+/* Functional CTA dialog: a calm, accessible conversion moment rather than a dead-end button. */
+.signup-backdrop { position: fixed; z-index: 100; inset: 0; display: grid; place-items: center; padding: 20px; background: rgba(10,13,11,.62); backdrop-filter: blur(10px); animation: modal-fade .18s ease-out both; }
+.signup-dialog { position: relative; width: min(100%, 480px); padding: 42px; background: var(--bone); color: var(--ink); border: 1px solid var(--hairline); box-shadow: 0 30px 90px rgba(0,0,0,.28); animation: modal-rise .24s var(--ease-out) both; }
+.signup-dialog h2 { margin: 18px 0 12px; font-family: 'Fraunces', serif; font-size: 42px; line-height: 1; letter-spacing: -.05em; }
+.signup-dialog > p, .signup-success p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+.signup-close { position: absolute; top: 14px; right: 14px; display: grid; place-items: center; width: 34px; height: 34px; background: transparent; color: var(--muted); border: 1px solid var(--hairline); }
+.signup-close:hover { color: var(--ink); border-color: var(--ink); }
+.signup-dialog form { display: grid; gap: 10px; margin-top: 26px; }.signup-dialog label { color: var(--ink); font-size: 11px; font-weight: 700; }.signup-dialog input { width: 100%; min-height: 48px; padding: 0 13px; border: 1px solid var(--hairline); background: transparent; color: var(--ink); font-size: 14px; }.signup-dialog input::placeholder { color: #9aa095; }.signup-dialog input:focus { outline: 2px solid var(--chartreuse); outline-offset: 2px; }.signup-dialog form .button { margin-top: 8px; width: 100%; }.signup-footnote { display: flex; align-items: center; gap: 6px; margin-top: 18px; color: var(--muted); font-size: 10px; }.signup-footnote svg { color: #9aaa48; }.signup-success .success-mark { display: grid; place-items: center; width: 43px; height: 43px; margin-bottom: 26px; background: var(--chartreuse); color: var(--ink); border-radius: 50%; }.signup-success .button { margin-top: 25px; }
+.theme-dark .signup-dialog { background: #18201a; color: #f4f5eb; border-color: #4c5d4e; }.theme-dark .signup-dialog > p, .theme-dark .signup-success p, .theme-dark .signup-footnote { color: #b8c2b5; }.theme-dark .signup-dialog input { border-color: #4c5d4e; color: #f4f5eb; }.theme-dark .signup-dialog input::placeholder { color: #7f8d82; }.theme-dark .signup-close { border-color: #4c5d4e; color: #b8c2b5; }.theme-dark .signup-close:hover { border-color: var(--chartreuse); color: var(--chartreuse); }
+@keyframes modal-fade { from { opacity: 0; } to { opacity: 1; } } @keyframes modal-rise { from { opacity: 0; transform: translateY(12px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@media (max-width: 680px) { .signup-dialog { padding: 34px 22px 26px; }.signup-dialog h2 { font-size: 35px; } }
