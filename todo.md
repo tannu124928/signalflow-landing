@@ -1,8 +1,7 @@
-# SignalFlow enhancement checklist
+# SignalFlow repair and enhancement checklist
 
-- [x] Generate stronger complementary visual assets for light and dark presentation.
-- [x] Integrate the improved assets without weakening dashboard legibility or performance.
-- [x] Add an accessible dark/light mode toggle with persisted preference.
-- [x] Update theme-aware colors, surfaces, and imagery across the page.
-- [x] Run checks and verify desktop/mobile theme behavior.
-- [ ] Save a new checkpoint and deliver the revision.
+- [x] Fix dark-mode hero contrast and any horizontal overflow at the reported viewport.
+- [x] Generate stronger complementary visual assets for light and dark states.
+- [x] Add purposeful hero/dashboard motion with reduced-motion support.
+- [x] Verify the theme toggle, responsive navigation, and 390px/1440px layouts.
+- [ ] Save a checkpoint and deliver the repaired revision.

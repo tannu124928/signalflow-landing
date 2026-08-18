@@ -169,3 +169,37 @@ button { border: 0; }
 .theme-dark .feature-card { background: rgba(29,38,31,.7); border-color: #303b32; }.theme-dark .feature-card:hover { background: #1d261f; }.theme-dark .feature-icon { border-color: #3a463c; color: #b7c1b4; }.theme-dark .feature-card p { color: #9ca79b; }.theme-dark .feature-detail { color: #c3cfbd; }.theme-dark .features-section, .theme-dark .showcase, .theme-dark .workflow-section { border-color: var(--hairline); }
 .theme-dark .closing-section { background: #080c09; }
 @media (max-width: 680px) { .theme-toggle { margin-right: 8px; padding: 0 8px; }.theme-toggle span { display: none; }.theme-dark .nav-links { background: #121813; border-color: #39453b; }.theme-dark .nav-links a { border-color: #29352c; } }
+
+/* Dark-mode repair, viewport guardrails, and purposeful motion pass. */
+html, body { overflow-x: clip; }
+.hero { grid-template-columns: minmax(0, .93fr) minmax(0, 1.07fr); gap: clamp(28px, 6vw, 80px); }
+.hero-art { min-width: 0; isolation: isolate; }
+.dashboard-shell { min-width: 0; overflow: hidden; }
+.theme-dark .hero { background: #101411; }
+.theme-dark .hero-art { background: #172019; border-color: #4c5d4e; box-shadow: inset 0 0 0 1px rgba(216,244,90,.04), 0 22px 70px rgba(0,0,0,.22); }
+.theme-dark .hero-art::before { content: ""; position: absolute; z-index: 1; inset: 0; background: linear-gradient(135deg, rgba(216,244,90,.09), transparent 42%), repeating-linear-gradient(90deg, transparent 0 72px, rgba(205,220,205,.08) 73px, transparent 74px), repeating-linear-gradient(0deg, transparent 0 72px, rgba(205,220,205,.06) 73px, transparent 74px); pointer-events: none; }
+.theme-dark .hero-art::after { z-index: 2; background: linear-gradient(90deg, rgba(16,20,17,.03), rgba(16,20,17,.12)); }
+.theme-dark .hero-image--dark { position: relative; z-index: 0; opacity: .85; mix-blend-mode: screen; filter: contrast(1.12) brightness(1.16) saturate(.9); }
+.theme-dark .hero-art-label { z-index: 4; color: #c3cec1; }
+.theme-dark .hero-note-card { z-index: 5; background: #202b23; border-color: #617162; color: #f4f5eb; }
+.theme-dark .hero-note-card strong { color: #f4f5eb; }.theme-dark .hero-note-card span:not(.pulse-dot) { color: #c0ccc0; }.theme-dark .hero-note-card small { color: #acb9ab; }
+.theme-dark .hero h1, .theme-dark .section-intro h2, .theme-dark .workflow-copy h2, .theme-dark .interactive-header h2, .theme-dark .features-heading h2, .theme-dark .closing-content h2 { color: #f4f5eb; }
+.theme-dark .hero-copy, .theme-dark .section-intro > p, .theme-dark .interactive-header > p, .theme-dark .features-heading > p, .theme-dark .lead-copy { color: #b8c2b5; }
+.theme-dark .workflow-image { background: #172019; border-color: #4c5d4e; }.theme-dark .workflow-image-dark { opacity: .82; filter: contrast(1.14) brightness(1.2); mix-blend-mode: screen; }
+.theme-dark .workflow-section { background: #101411; }
+@media (min-width: 981px) and (max-width: 1200px) { .hero { grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); gap: 32px; }.hero h1 { font-size: clamp(44px, 5vw, 66px); }.section-pad { padding-left: 28px; padding-right: 28px; } }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-art { animation: art-in .72s var(--ease-out) both; }
+  .hero-note-card { animation: note-float 4.2s ease-in-out 1s infinite; }
+  .dashboard-shell { animation: dashboard-rise .75s .12s var(--ease-out) both; }
+  .workflow-item { animation: rule-in .5s var(--ease-out) both; }
+  .workflow-item:nth-child(2) { animation-delay: .06s; }.workflow-item:nth-child(3) { animation-delay: .12s; }.workflow-item:nth-child(4) { animation-delay: .18s; }
+  .signal-chart svg path { stroke-dasharray: 900; stroke-dashoffset: 900; animation: draw-signal 1.5s .45s var(--ease-out) forwards; }
+  .feature-card { animation: card-in .55s var(--ease-out) both; }.feature-card:nth-child(2) { animation-delay: .05s; }.feature-card:nth-child(3) { animation-delay: .1s; }.feature-card:nth-child(4) { animation-delay: .15s; }
+}
+@keyframes art-in { from { opacity: 0; transform: translateX(18px) scale(.985); } to { opacity: 1; transform: translateX(0) scale(1); } }
+@keyframes note-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes dashboard-rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes rule-in { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes card-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes draw-signal { to { stroke-dashoffset: 0; } }
